@@ -1,14 +1,18 @@
 {
-  "name": "qlab-fetch",
-  "version": "0.0.0",
+  "name": "angular-nwjs-seed",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "dev": "npm run build:dev && nw ./app",
+    "prod": "npm run build:prod && nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ app/",
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
-    "test": "ng test",
+    "build:dev": "npm run clean && webpack --config webpack.config.development.js",
+    "build:prod": "npm run clean && webpack --config webpack.config.production.js",
+    "clean": "rimraf ./app/gui",
+    "test": "karma start ./karma.conf.js",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "protractor ./protractor.conf.js",
+    "pree2e": "webdriver-manager update --standalone false --gecko false --quiet"
   },
   "private": true,
   "dependencies": {
@@ -26,13 +30,21 @@
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
+    "@angular-devkit/core": "0.3.2",
     "@angular/cli": "~1.7.1",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
+    "@ngtools/webpack": "1.10.1",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
+    "autoprefixer": "^7.2.3",
+    "circular-dependency-plugin": "^4.2.1",
     "codelyzer": "^4.0.1",
+    "copy-webpack-plugin": "~4.4.1",
+    "file-loader": "^1.1.5",
+    "html-webpack-plugin": "^2.29.0",
+    "istanbul-instrumenter-loader": "^3.0.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
@@ -40,9 +52,43 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "less-loader": "^4.0.5",
+    "nw": "^0.28.3-sdk",
+    "nw-builder": "^3.5.1",
+    "postcss-import": "^11.0.0",
+    "postcss-loader": "^2.0.10",
+    "postcss-url": "^7.1.2",
     "protractor": "~5.1.2",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
+    "stylus-loader": "^3.0.1",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
-    "typescript": "~2.5.3"
-  }
+    "typescript": "~2.5.3",
+    "uglifyjs-webpack-plugin": "^1.1.8",
+    "url-loader": "^0.6.2",
+    "webpack": "~3.11.0",
+    "webpack-dev-server": "~2.11.0"
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.1.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s73obrien/angular-nwjs-seed.git"
+  },
+  "keywords": [
+    "angular",
+    "nwjs",
+    "starter",
+    "seed",
+    "angular",
+    "5"
+  ],
+  "author": "Sean O'Brien <s73obrien@hotmail.com>",
+  "bugs": {
+    "url": "https://github.com/s73obrien/angular-nwjs-seed/issues"
+  },
+  "homepage": "https://github.com/s73obrien/angular-nwjs-seed#readme"
 }

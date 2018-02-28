@@ -1,0 +1,8 @@
+- change base href from '/' to './'
+- create new angular app
+- create new folder 'app'
+- direct angular app to send files to 'app/gui'
+- open 'gui/index.html' -> 'app/package.json'
+- interface files and source are in 'src' folder
+- ejected webpack config from angular cli
+- added "target": "node-webkit" to exports in webpack.config.js and deleted 'node' entry (toward bottom of file)
